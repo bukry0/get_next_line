@@ -6,7 +6,7 @@
 /*   By: bcili <bcili@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 17:03:32 by bcili             #+#    #+#             */
-/*   Updated: 2024/12/18 15:02:57 by bcili            ###   ########.fr       */
+/*   Updated: 2024/12/18 15:24:03 by bcili            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ static char	*left_line_b(char *str)
 	i = 0;
 	while (str[i] != '\n' && str[i])
 		i++;
+	if (!str[i])
+		return (free(str), NULL);
 	if (str[i] == '\n')
 		i++;
 	newstr = malloc(ft_strlen_b(str) - i + 1);
@@ -87,7 +89,7 @@ static char	*read_line_b(int fd, char *str)
 	return (str);
 }
 
-char	*get_next_line_b(int fd)
+char	*get_next_line(int fd)
 {
 	static char	*str[10240];
 	char		*ret;
